@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>About</title>
+</head>
+<body>
+  <section>
+   <br>
+   <div class="row">
+     <div class="col-sm-9">
+         <h5 style="text-align:left">Edit Employee Details</h5>
+     </div>
+        <div class="col-sm-2"> 
+         <h6 th:text="'Welcome '+${hrname}+' !'" id="hrname"style="text-align: right"></h6>
+       </div>
+       <div class="col-sm-1"> 
+         <input type="image" src='logout.jpg' class='logout' width='40' height='30'>
+       </div>
+         
+    </div>
+   <div class="container" style="width: 50%; border-style:solid;">
+   <br><br>
+   <form action="update" method="post">
+     <div class="form-group row">
+         <label for="ecode" class="col-sm-4 required">Employee Code</label>
+         <div class="col-sm-5">
+         <input type="text" class="form-control form-control-sm" id="ecode" name="ecode" th:value="${ecode}" readonly>
+         </div>
+     </div>
+     <br>
+     <div class="form-group row">
+         <label for="ename" class="col-sm-4 required">Employee Name</label>
+         <div class="col-sm-5">
+         <input type="text" class="form-control form-control-sm" id="ename" name="ename" 
+          maxlength="50" required>
+         </div>
+     </div>
+     <br>
+      <div class="form-group row">
+         <label for="location" class="col-sm-4 required">Location</label>
+         <div class="col-sm-5">
+         <input type="text" class="form-control form-control-sm" id="location" name="location"
+          maxlength="500" required>
+         </div>
+     </div>
+     <br>
+     <div class="form-group row">
+         <label for="email" class="col-sm-4 required">Email</label>
+         <div class="col-sm-5">
+         <input type="text" class="form-control form-control-sm" id="email" name="email" 
+          maxlength="100" title="must be a valid email"
+          pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" required>
+         </div>
+     </div>
+     <br>
+     <div class="form-group row">
+         <label for="dob" class="col-sm-4 required">Date of Birth</label>
+         <div class="col-sm-5">
+         <input type="date" class="form-control form-control-sm" id="dob" name="dob"
+          pattern="^[0-9]{2}-[0-9]{2}-[0-9]{4}$" required>
+         </div>
+     </div>
+     <br>
+      <input type="text" name="hrname" th:value="${hrname}" hidden>
+      <input type="submit" class="btn-primary btn me-3" value="Save"></input>
+      <input type="reset" class="btn btn-danger" value="Cancel"></input>
+   </form>
+   <br><br>
+   </div>
+   <script>
+   $(".logout").click(function(){
+ 	  window.location.href="logout";
+ 	});
+   </script>
+  </section>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>About</title>
+</head>
+<body>
+  <section>
+   <div class="row">
+     <div class="col-sm-9">
+         <h5 style="text-align:left">Employee Listings</h5>
+     </div>
+        <div class="col-sm-2"> 
+         <h6 th:text="'Welcome '+${HRManager}+' !'" class="hrname" th:id="${HRManager}" style="text-align: right"></h6>
+       </div>
+       <div class="col-sm-1"> 
+         <input type="image" src='logout.jpg' class='logout' width='40' height='30'>
+       </div>
+         
+    </div>
+    <div class="container-fluid" style="border-style:solid;">
+    <br>
+       <div class="row"> 
+         <div class="col-sm-7"></div>
+         <div class="col-sm-2">
+           <input type="button" name="upload" value="Upload Employee Details" class="upload">
+          </div> 
+          <div class="col-sm-3">
+           <input type="button" name="download" value="Download Employee Details" class="download">
+          </div>
+       </div>
+      <br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Employee Code</th>
+          <th scope="col">Employee Name</th>
+          <th scope="col">Location</th>
+          <th scope="col">Email</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Action</th>
+         </tr>
+       </thead>
+        <tbody>
+            <tr th:each="e:${empList}">
+            <td th:text="${e.code}"></td>
+            <td th:text="${e.name}"></td>
+            <td th:text="${e.location}"></td>
+            <td th:text="${e.email}"></td>
+            <td th:text="${e.dob}"></td>
+            <td><input type='button' class='edit' value='Edit'></td>
+          </tr>
+       </tbody>
+     </table>
+    </div>  
+    <script>
+     $(".edit").click(function(){
+  	  var code=$(this).parents("tr").children("td:first").html();
+  	  var hrname=$(".hrname").attr("id");
+  	  console.log("chck");
+  	  //$.ajax({url:"edit",method:"post",data:{ empCode: code}, });
+  	  window.location.href="edit?empCode="+code+"&hrname="+hrname;
+  	});
+     
+     $(".download").click(function(){
+     	  console.log("chck");
+     	  $.ajax({url:"download",method:"get"});
+     	});
+     
+     $(".logout").click(function(){
+    	  window.location.href="logout";
+    	});
+  
+     $(".upload").click(function(){
+      var hrname=$(".hrname").attr("id");
+   	  window.location.href="upload?hrname="+hrname;
+   	 });
+   </script>
+  </section>
+</body>
+</html>

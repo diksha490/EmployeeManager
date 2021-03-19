@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>About</title>
+</head>
+<body>
+  <section>
+   <div th:if="${isValid != null}">
+       <script th:inline="javascript">
+              alert("Invalid Credentials!!");
+        </script>
+   </div>
+   <br>
+   <div class="container" style="width: 50%; border-style:solid;">
+   <br><br>
+   <form action="validate" method="post">
+     <div class="form-group row">
+         <label for="userid" class="col-sm-4 required">User Id</label>
+         <div class="col-sm-5">
+         <input type="text" class="form-control form-control-sm" id="userid" name="userid" 
+               pattern="[a-z0-9]{5,50}" title="Min 5 and Min 50 Characters" required>
+         </div>
+     </div>
+     <br>
+     <div class="form-group row">
+         <label for="pwdid" class="col-sm-4 required">Password</label>
+         <div class="col-sm-5">
+         <input type="password" class="form-control form-control-sm" id="pwdid" name="password"
+               pattern="[a-z0-9]{5,50}" title="Min 5 and Min 50 Characters" required>
+         
+         </div>
+     </div>
+     <br>
+      <input type="submit" style="text-align: centre" class="btn-primary btn me-3" value="Login">
+   </form>
+   <br><br>
+   </div>
+  </section>
+</body>
+</html>

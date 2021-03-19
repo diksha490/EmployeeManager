@@ -1,0 +1,18 @@
+.login-container { 
+  width: 50%;
+}
+
+.required:after {
+    content:" *";
+    color: red;
+  }
+  
+.login-border {
+   border-style:solid;
+   background-color:#f0f8ff;
+   border-bottom-width:0px;
+}
+
+.footer-class {
+	text-align:right;
+}
