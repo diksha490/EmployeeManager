@@ -58,13 +58,12 @@
   	  var code=$(this).parents("tr").children("td:first").html();
   	  var hrname=$(".hrname").attr("id");
   	  console.log("chck");
-  	  //$.ajax({url:"edit",method:"post",data:{ empCode: code}, });
   	  window.location.href="edit?empCode="+code+"&hrname="+hrname;
   	});
      
      $(".download").click(function(){
      	  console.log("chck");
-     	  $.ajax({url:"download",method:"get"});
+     	  window.location.href="download";
      	});
      
      $(".logout").click(function(){

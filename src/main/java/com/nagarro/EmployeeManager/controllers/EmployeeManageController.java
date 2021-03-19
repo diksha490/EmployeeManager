@@ -89,8 +89,7 @@ public class EmployeeManageController {
 	
 	 @SuppressWarnings("unchecked")
 	 @GetMapping("/download")
-	 public void exportCSV(HttpServletResponse response) throws IOException {
-		    //System.out.println("download");
+	 public String exportCSV(HttpServletResponse response) throws IOException {
 		    response.setContentType("text/csv");
 	        
 	         
@@ -110,11 +109,11 @@ public class EmployeeManageController {
 	         
 	        csvWriter.writeHeader(csvHeader);
 	        for(Employee emp:empList) {
-	        	System.out.println(emp.getCode()+" "+emp.getName());
 	            csvWriter.write(emp,nameMapping);
 	        }
 	         
 	        csvWriter.close();
+	        return "employeeList";
 	       		   
 	 }
 	
